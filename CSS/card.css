@@ -1,0 +1,231 @@
+body {
+    background-color: #0d2c5e;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Header Styling */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 3vw;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: transparent;
+}
+
+.logo {
+    font-size: clamp(1.2em, 2vw, 2em);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.logo span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 40px;
+}
+.main-nav span {
+    font-family: 'Clicker Script', cursive;
+    font-size: 30px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1.5em;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    transition: opacity 0.2s, color 0.2s;
+    outline: none;
+}
+
+.main-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+    }
+
+.main-nav a:hover,
+.main-nav a:focus {
+    opacity: 0.8;
+    color: #00c8ff;
+}
+
+/* Main Content Styling */
+.content-center {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6em 2vw 4em 2vw;
+}
+
+.main-visual-container {
+    position: relative;
+    width: min(90vw, 520px);
+    height: min(90vw, 520px);
+    max-width: 98vw;
+    max-height: 98vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.text-overlay {
+    position: absolute;
+    z-index: 2;
+    padding: 2em 1.5em;
+}
+
+.text-overlay h1 {
+    font-family: cursive;
+    font-size: clamp(1.5em, 3.2vw, 2.5em);
+    margin: 0;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.text-overlay p {
+    font-size: clamp(1em, 3vw, 1.1em);
+    max-width: 350px;
+    margin: 1em auto 0;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+    font-weight: 550;
+}
+
+/* Bokeh Effect Styling */
+#bokeh-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+    animation: container-spin 30s infinite linear;
+    overflow: visible;
+}
+
+.bokeh-dot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 200, 255, 0.4);
+    animation: bounce 3s infinite cubic-bezier(.68, -0.55, .27, 1.55) alternate;
+    opacity: 0.7;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0) scale(var(--scale, 1));
+    }
+
+    50% {
+        transform: translateY(-40px) scale(var(--scale, 1.1));
+    }
+
+    100% {
+        transform: translateY(0) scale(var(--scale, 1));
+    }
+}
+
+@keyframes container-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Footer Styling */
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 1.2em 2vw;
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2em;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.2em;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    color: #00c8ff;
+    opacity: 0.8;
+    outline: none;
+}
+
+/* Responsive Styling */
+@media (max-width: 900px) {
+    .text-overlay {
+        padding: 1.2em 0.7em;
+        max-width: 50vw;
+    }
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+    .main-visual-container {
+        width: 98vw;
+        height: 98vw;
+        min-width: 220px;
+        min-height: 220px;
+        max-width: 99vw;
+        max-height: 99vw;
+    }
+
+    .text-overlay {
+        padding: 0.7em 0.3em;
+        max-width: 60vw;
+    }
+
+    .text-overlay h1 {
+        font-size: 1.2em;
+    }
+
+    .text-overlay p {
+        font-size: 0.95em;
+        max-width: 95vw;
+    }
+
+    .page-footer {
+        padding: 0.7em 2vw;
+        font-size: 0.95em;
+    }
+
+    .social-links {
+        gap: 0.7em;
+    }
+}
